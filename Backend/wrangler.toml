@@ -1,0 +1,28 @@
+name = "blogging-site"
+main = "src/index.ts"
+compatibility_date = "2024-10-12"
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNjVjN2IwNDctYjg4NS00NjBkLWE0YmUtOTNiNDU2MDE1MzY1IiwidGVuYW50X2lkIjoiMjJkZDBlOTVlMGNjMzgwZjBlYTkyZGVhODUzZWMyM2Y1MjlmMWQxNGZkYjk2YWVhMjRlYjBmM2U2OWM2M2M4MiIsImludGVybmFsX3NlY3JldCI6IjZhOTM1NTU1LTM4NTEtNGRkMC05MmNkLTJiYTg1YjU0MWI5ZiJ9.UG_84UhSCtKlFV6mS46K9Te_081xtlLJ6LfUlwM20UQ"
+JWT_SECRET="Himynameis"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "my-database"
+# database_id = ""
+
+# [ai]
+# binding = "AI"
+
+# [observability]
+# enabled = true
+# head_sampling_rate = 1
