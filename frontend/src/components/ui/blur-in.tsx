@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BlurInProps {
-  word: string;
+  word: React.ReactNode; // Change from string to React.ReactNode
   className?: string;
   variant?: {
     hidden: { filter: string; opacity: number };
@@ -25,7 +25,7 @@ const BlurIn = ({ word, className, variant, duration = 1, delay = 0 }: BlurInPro
     <motion.h1
       initial="hidden"
       animate="visible"
-      transition={{ duration ,delay}} // Added delay to transition
+      transition={{ duration, delay }} // Added delay to transition
       variants={combinedVariants}
       className={cn(
         "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
