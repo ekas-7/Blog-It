@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertCircle } from "lucide-react";
+import { BACKEND_URL } from "@/api/config";
+
+import axios from "axios";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -11,13 +14,14 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -25,9 +29,17 @@ export default function SignUp() {
       setError("All fields are required");
       return;
     }
-
-    // Here you would typically call your API to handle the sign-up process
-    console.log("Sign up with:", { name, email, password });
+    const body= {
+      "email":email,
+      "password":password,
+      "name":name
+    }
+    
+    const response= await axios.post(`${BACKEND_URL}/api/v1/user/signup`,body);
+    console.log(response);
+    const jwt = response.data;
+    localStorage.setItem("token", jwt);
+    navigate("/blogs")
   };
 
   return (

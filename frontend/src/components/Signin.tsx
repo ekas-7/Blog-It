@@ -4,29 +4,41 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertCircle } from "lucide-react";
+import axios from "axios";
+import { BACKEND_URL } from "@/api/config";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const navigate= useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    if (!email || !password) {
+    if ( !email || !password) {
       setError("All fields are required");
       return;
     }
-
-    // Here you would typically call your API to handle the sign-in process
-    console.log("Sign in with:", { email, password });
+    const body= {
+      "email":email,
+      "password":password
+     
+    }
+    
+    const response= await axios.post(`${BACKEND_URL}/api/v1/user/signin`,body);
+    console.log(response.data);
+    const jwt = response.data.jwt;
+    localStorage.setItem("token", jwt);
+    navigate("/blogs")
   };
 
   return (
