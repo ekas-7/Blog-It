@@ -14,14 +14,7 @@ const BlogList = () => {
 
   return (
     <main className="w-full xl:w-3/4 mx-auto">
-      <header className="text-center border-b pb-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-2 mt-8">
-          Discover Insightful Articles
-        </h2>
-        <p className="text-xl text-gray-500 mb-4">
-          Expand your knowledge with our curated collection of tech insights.
-        </p>
-      </header>
+      
       {blogPosts.length > 0 ? (
         blogPosts.map((post) => (
     
