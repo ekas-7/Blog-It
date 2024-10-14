@@ -42,7 +42,7 @@ Follow these instructions to set up the project locally.
  1.  Clone the repository:
 	
 
-	    git clone https://github.com/ekas-7/Blog-It.git
+	   ``` git clone https://github.com/ekas-7/Blog-It.git ```
 
  2. Navigate to the project directory:
  
