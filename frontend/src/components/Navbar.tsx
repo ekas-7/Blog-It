@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +15,15 @@ interface NavbarProps {
 
 export default function Navbar({ authorName = 'John Doe' }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate() // Initialize useNavigate
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const handleLogout = () => {
-    // Add your logout logic here
+    // Remove the token from localStorage (or sessionStorage)
+    localStorage.removeItem('token') // Adjust this based on your implementation
     console.log("User logged out")
+    navigate('/') // Navigate to home page
   }
 
   return (
@@ -45,10 +47,9 @@ export default function Navbar({ authorName = 'John Doe' }: NavbarProps) {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="ml-3 relative flex items-center">
-                  <Avatar className="h-8 w-8">
-                    <AvatarFallback>{authorName.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <MoreHorizontal className="ml-2 h-4 w-4 transform rotate-90" /> {/* Rotated the icon */}
+                  <div className="h-8 w-8 flex items-center justify-center rounded-full bg-gray-200">
+                    <MoreHorizontal className="h-4 w-4 text-gray-600" />
+                  </div>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -88,9 +89,9 @@ export default function Navbar({ authorName = 'John Doe' }: NavbarProps) {
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
-                <Avatar className="h-10 w-10">
-                  <AvatarFallback>{authorName.charAt(0)}</AvatarFallback>
-                </Avatar>
+                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-gray-200">
+                  <MoreHorizontal className="h-5 w-5 text-gray-600" />
+                </div>
               </div>
               <div className="ml-3">
                 <div className="text-base font-medium text-gray-800">{authorName}</div>
