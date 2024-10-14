@@ -22,20 +22,20 @@ export default function BlogCard({
 }: BlogCardProps) {
   return (
     <Link to={`/blog/${blogId}`} className="block group">
-      <article className="max-w-4xl py-6 border-b border-gray-200 transition-colors hover:bg-gray-50"> {/* Reduced padding */}
-        <div className="flex items-center text-sm mb-3"> {/* Adjusted margin for spacing */}
-          <Avatar className="h-10 w-10 mr-3"> {/* Adjusted avatar size */}
+      <div className="w-full py-6 px-4 border-b border-gray-200 transition-colors hover:bg-gray-50">
+        <div className="flex items-center text-sm mb-3">
+          <Avatar className="h-10 w-10 mr-3 border-2 border-gray-300 rounded-full">
             <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <span className="font-medium text-gray-800 mr-2">{author.name}</span>
-          <span className="text-gray-500">{date}</span> {/* Removed the period */}
+          <span className="text-gray-500">{date}</span>
         </div>
-        <h2 className="text-2xl font-bold mb-2 group-hover:underline">{title}</h2> {/* Reduced title size */}
-        <p className="text-gray-600 mb-4 line-clamp-3">{content}</p> {/* Adjusted line clamp */}
+        <h2 className="text-2xl font-bold mb-2 group-hover:underline md:text-3xl">{title}</h2>
+        <p className="text-gray-600 mb-4 line-clamp-3 sm:text-base md:text-lg">{content}</p>
         <div className="flex items-center text-sm">
           <span className="text-gray-500">{Math.ceil(content.length / 100)} min read</span>
         </div>
-      </article>
+      </div>
     </Link>
   );
 }
