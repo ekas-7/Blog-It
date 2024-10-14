@@ -3,7 +3,7 @@
 This is a blogging application inspired by Medium. The project is built from scratch using a modern tech stack and deployed on Vercel and Cloudflare Workers.
 
 ## Live Demo
-Check out the live app [here](https://blog-7ytpfq9wi-ekasatwal7.vercel.app/)
+Check out the live app [here](https://blog-it-jade-nu.vercel.app/)
 ## Features
 
 -   User Authentication (JWT)
