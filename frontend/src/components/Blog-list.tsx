@@ -1,19 +1,35 @@
 import BlogCard from "@/components/Blogcard";
 import { useBlogs } from "@/hooks";
 import { useEffect } from "react";
+import { BlogSkeleton } from "@/components/Blogskeleton";
 
 const BlogList = () => {
-  const { blogs, loading } = useBlogs();
-  
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const {loading, blogs} = useBlogs();
+
+    if (loading){
+      return <div>
+        
+        <div className="flex justify-center">
+          <div>
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          <BlogSkeleton />
+          </div>
+          
+        </div>
+      </div>
+    }
   useEffect
   const blogPosts = blogs;
   
 
   return (
-    <main className="w-full xl:w-3/4 mx-auto">
+    <main className="w-full xl:max-w-7xl mx-auto">
       
       {blogPosts.length > 0 ? (
         blogPosts.map((post) => (

@@ -1,6 +1,7 @@
 import Bloglist from "@/components/Blog-list";
 import Navbar from "@/components/Navbar";
 
+
 const Blogs = () => {
  
 

@@ -2,10 +2,20 @@ import { Blog } from "../hooks";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Home } from "lucide-react"; // Importing Home icon from lucide-react
 import { Link } from "react-router-dom"; // Assuming you're using react-router for navigation
+import { useEffect, useRef } from "react";
 
-export const DetailedBlog = ({ blog }: { blog: Blog }) => {
+
+export const DetailedBlog = ({ blog, loading }: { blog: Blog; loading: boolean }) => {
+  const topRef = useRef<HTMLDivElement>(null); // Create a ref for scrolling
+
+  useEffect(() => {
+    if (!loading) {
+      topRef.current?.scrollIntoView({ behavior: 'smooth' }); // Scroll to the top when loading becomes true
+    }
+  }, [loading]);
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50 py-12" ref={topRef}> {/* Attach the ref here */}
       <div className="flex justify-center">
         <div className="grid grid-cols-12 w-full px-5 md:px-10 lg:mt-4 max-w-screen-xl gap-6">
           

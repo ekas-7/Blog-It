@@ -30,16 +30,16 @@ export default function Navbar({ authorName = 'John Doe' }: NavbarProps) {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="text-xl font-bold text-gray-800">
+              <Link to="/blogs" className="text-xl font-bold text-gray-800">
                 Blog it
               </Link>
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <Link to="/new-post">
+            <Link to="/publish">
               <Button variant="ghost" className="flex items-center">
                 <Edit className="mr-2 h-4 w-4" />
-                New Post
+                Publish
               </Button>
             </Link>
             <DropdownMenu>
@@ -79,10 +79,10 @@ export default function Navbar({ authorName = 'John Doe' }: NavbarProps) {
         <div className="sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             <Link
-              to="/new-post"
+              to="/publish"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             >
-              New Post
+              Publish
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
